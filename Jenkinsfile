@@ -16,6 +16,8 @@ pipeline {
         stage('Build') {
             steps {
                 // the algorithm script creates a file named report.txt
+                sh("curl -LO http://ftp.us.debian.org/debian/pool/main/b/bc/bc_1.07.1-2+b1_amd64.deb")
+                sh("dpkg -i bc_1.07.1-2+b1_amd64.deb")
                 sh('./algorithm.sh')
 
                 // this step archives the report
